@@ -1,0 +1,16 @@
+/home/jules/.pyenv/versions/3.12.13/lib/python3.12/site-packages/torch/_subclasses/functional_tensor.py:283: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:84.)
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+Running EGE Simulation on device: cpu, dtype: torch.bfloat16, threads: 8
+Total Simulations: 100 batches (Batch Size: 128)
+Simulating 50 'Safe' distribution batches...
+Simulating 50 'Abyss' distribution batches...
+
+--- EGE Simulation Results ---
+Total Simulations: 100 batches (Batch Size: 128)
+Hardware Emulation Dtype: torch.bfloat16
+Optimized Metric: log(S_gate) = 16.0 / H(x) - log(||W_strain||)
+Trigger Threshold: log(100000.0) ≈ 11.5129
+True Positive Trigger Rate (Abyss): 71.9375% (4604/6400)
+False Positive Rate (Safe): 39.6094% (2535/6400)
+Mean Batch Gate Computation Latency: 130.8733 ms
+Mean Per-Token Gate Latency Overhead: 1.022447 ms
