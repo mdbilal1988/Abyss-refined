@@ -15,7 +15,7 @@ def generate_truthful_qa_gold_data():
         })
 
     df = pd.DataFrame(data)
-    df.to_csv("ege_workspace/truthful_qa_gold_data.csv", index=False)
+    df.to_csv("data/truthful_qa_gold_data.csv", index=False)
     print(f"Saved {len(df)} mocked TruthfulQA questions.")
 
 def generate_comparative_benchmark_data():
@@ -78,8 +78,8 @@ def generate_comparative_benchmark_data():
     metrics.sort(key=lambda x: x["Relative Compute Overhead (%)"])
 
     df = pd.DataFrame(metrics)
-    df.to_csv("ege_workspace/ege_final_ieee_data.csv", index=False)
-    print("Saved comparative analytical metrics to ege_final_ieee_data.csv.")
+    df.to_csv("data/ege_final_ieee_data.csv", index=False)
+    print("Saved comparative analytical metrics to data/ege_final_ieee_data.csv.")
 
 if __name__ == "__main__":
     generate_truthful_qa_gold_data()
