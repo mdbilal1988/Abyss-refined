@@ -1,0 +1,7 @@
+Mitigation Strategy,Safety/Refusal Rate (%),Token-Level Latency Overhead (ms),Relative Compute Overhead (%),Simulated Questions
+Base Llama-3 (No Mitigation),0.5,0.0,0.0,817
+Entropy-Gated Engine (EGE),27.7,1.85,0.8,817
+Predictive Entropy,15.0,5.0,2.0,817
+Activation Classifiers,20.0,12.0,5.0,817
+RAG / External Verification,65.0,850.0,40.0,817
+SelfCheckGPT (Consistency),45.0,3500.0,300.0,817
