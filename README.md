@@ -12,15 +12,17 @@ The Entropy-Gated Engine (EGE) is a highly optimized safety truncation metric na
 
 Simulated across 10,000 tensor batches (Batch Size: 128, Vocabulary: 128,256), our empirical benchmarks on the TruthfulQA dataset demonstrate a 27.7% safety refusal rate with a breakthrough latency overhead of only **1.85 ms per token**---a 99.94% reduction in latency compared to consistency-based methods.
 
-## The Mathematical Core: $\log(S_{gate})$ Log-Space Inversion
+## The Mathematical Core: Log-Space Inversion
 
-Our initial theoretical framework ($S_{gate} = \frac{\exp(\alpha \cdot H(x))}{\|W_{strain}\|}$) sought to trigger a safety gate when a model entered a high-confidence, hallucinatory "Abyss" state ($H(x) \approx 1.17$). However, evaluating an exponential function dynamically on `float16` and `bfloat16` hardware causes immediate catastrophic floating-point overflow.
+Our initial theoretical framework `S_gate = exp(alpha * H(x)) / ||W_strain||` sought to trigger a safety gate when a model entered a high-confidence, hallucinatory "Abyss" state (`H(x) ≈ 1.17`). However, evaluating an exponential function dynamically on `float16` and `bfloat16` hardware causes immediate catastrophic floating-point overflow.
 
 To resolve this vulnerability, we inverted the relationship and mathematically restructured the entire gate evaluation into log-space:
 
-$$ \log(S_{gate}) = \frac{\alpha}{H(x)} - \log(\|W_{strain}\|) > \log(\tau) $$
+```math
+log(S_gate) = alpha / H(x) - log(||W_strain||) > log(tau)
+```
 
-This operation executes flawlessly in mixed-precision environments without overflowing, spiking exponentially precisely when the predictive distribution collapses to breach the safety truncation threshold ($\tau = 100,000$).
+This operation executes flawlessly in mixed-precision environments without overflowing, spiking exponentially precisely when the predictive distribution collapses to breach the safety truncation threshold (`tau = 100,000`).
 
 ## Known Limitations: The "Alignment Tax"
 
@@ -31,9 +33,11 @@ Despite the latency breakthrough, the EGE model is not immune to the Alignment T
 
 ### V1.1 Optimizations (Adaptive Alpha & EOS Masking)
 
-To address these flaws, V1.1 introduces an early-layer semantic risk coefficient $R(x)$ and an organic suppression factor $P_{eos}$ for the EOS token (where $\gamma = 2.0$):
+To address these flaws, V1.1 introduces an early-layer semantic risk coefficient `R(x)` and an organic suppression factor `P_eos` for the EOS token (where `gamma = 2.0`):
 
-$$ \log(S_{gate}) = \left( \frac{8.0 + (8.0 \cdot R(x))}{H(x)} - \log(\|W_{strain}\|) \right) \cdot (1 - P_{eos})^\gamma $$
+```math
+log(S_gate) = ( [8.0 + 8.0 * R(x)] / H(x) - log(||W_strain||) ) * (1 - P_eos)^gamma
+```
 
 This adjustment successfully dropped the EOS False Positive Rate from 93.08% to 0.00%, and reduced the Safe Distribution False Positive Rate from 39.54% down to 17.47%, while maintaining a 69.79% True Positive trigger rate for Abyss Hallucinations.
 
