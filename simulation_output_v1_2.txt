@@ -1,0 +1,17 @@
+Running Stage 6 EGE Simulation on cpu (torch.bfloat16)
+
+--- Safe Distribution ---
+  V1.0 Triggers (False Positives if not Abyss): 39.65%
+  Stage 6 Triggers (False Positives if not Abyss): 53.95%
+
+--- Factual Recall ---
+  V1.0 Triggers (False Positives if not Abyss): 83.28%
+  Stage 6 Triggers (False Positives if not Abyss): 2.42%
+
+--- EOS Token Collapse ---
+  V1.0 Triggers (False Positives if not Abyss): 93.27%
+  Stage 6 Triggers (False Positives if not Abyss): 0.00%
+
+--- Abyss Hallucination ---
+  V1.0 Triggers (False Positives if not Abyss): 72.20%
+  Stage 6 Triggers (False Positives if not Abyss): 82.77%

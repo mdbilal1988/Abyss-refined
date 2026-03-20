@@ -1,0 +1,17 @@
+Running V1.1 EGE Simulation on cpu (torch.bfloat16)
+
+--- Safe Distribution ---
+  V1.0 Triggers (False Positives if not Abyss): 39.54% (5061/12800)
+  V1.1 Triggers (False Positives if not Abyss): 17.47% (2236/12800)
+
+--- Factual Recall ---
+  V1.0 Triggers (False Positives if not Abyss): 83.23% (10653/12800)
+  V1.1 Triggers (False Positives if not Abyss): 61.66% (7892/12800)
+
+--- EOS Token Collapse ---
+  V1.0 Triggers (False Positives if not Abyss): 93.08% (11914/12800)
+  V1.1 Triggers (False Positives if not Abyss): 0.00% (0/12800)
+
+--- Abyss Hallucination ---
+  V1.0 Triggers (False Positives if not Abyss): 71.72% (9180/12800)
+  V1.1 Triggers (False Positives if not Abyss): 69.79% (8933/12800)

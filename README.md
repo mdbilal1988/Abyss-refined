@@ -29,6 +29,14 @@ Despite the latency breakthrough, the EGE model is not immune to the Alignment T
 1.  **EOS Token Collapse:** As the LLM approaches the end of a valid, truthful generation, predictive confidence naturally spikes on the End-Of-Sequence (EOS) token, drastically dropping entropy. EGE frequently misinterprets this deterministic exit as an Abyss hallucination, prematurely severing the output sequence.
 2.  **Factual Over-generalization:** The rigid threshold acts as a blunt instrument. It over-generalizes to harmless, low-entropy factual recall (e.g., retrieving an exact date), punishing the model's confidence with false-positive safety truncations.
 
+### V1.1 Optimizations (Adaptive Alpha & EOS Masking)
+
+To address these flaws, V1.1 introduces an early-layer semantic risk coefficient $R(x)$ and an organic suppression factor $P_{eos}$ for the EOS token (where $\gamma = 2.0$):
+
+$$ \log(S_{gate}) = \left( \frac{8.0 + (8.0 \cdot R(x))}{H(x)} - \log(\|W_{strain}\|) \right) \cdot (1 - P_{eos})^\gamma $$
+
+This adjustment successfully dropped the EOS False Positive Rate from 93.08% to 0.00%, and reduced the Safe Distribution False Positive Rate from 39.54% down to 17.47%, while maintaining a 69.79% True Positive trigger rate for Abyss Hallucinations.
+
 ## Repository Structure
 
 *   `src/`: Core Python scripts, including the EGE simulation (`simulate.py`), calibration logic, and the TruthfulQA benchmark evaluation harness (`official_benchmark.py`).
