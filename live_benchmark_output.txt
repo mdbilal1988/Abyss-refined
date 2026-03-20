@@ -1,0 +1,75 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B on CPU...
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:10<59:36, 10.58s/it]Loading weights:  23%|██▎       | 78/339 [00:10<00:25, 10.10it/s]Loading weights:  31%|███       | 105/339 [00:11<00:17, 13.22it/s]Loading weights:  35%|███▌      | 119/339 [00:12<00:14, 14.81it/s]Loading weights:  38%|███▊      | 128/339 [00:12<00:12, 16.69it/s]Loading weights:  40%|████      | 136/339 [00:12<00:11, 18.35it/s]Loading weights:  44%|████▎     | 148/339 [00:12<00:08, 22.35it/s]Loading weights:  47%|████▋     | 160/339 [00:14<00:11, 15.88it/s]Loading weights:  49%|████▊     | 165/339 [00:14<00:10, 16.76it/s]Loading weights:  51%|█████     | 172/339 [00:14<00:10, 15.21it/s]Loading weights:  54%|█████▍    | 184/339 [00:15<00:07, 20.11it/s]Loading weights:  58%|█████▊    | 196/339 [00:15<00:07, 20.31it/s]Loading weights:  61%|██████▏   | 208/339 [00:18<00:14,  8.84it/s]Loading weights:  65%|██████▌   | 222/339 [00:18<00:09, 12.74it/s]Loading weights:  68%|██████▊   | 232/339 [00:19<00:06, 15.32it/s]Loading weights:  70%|██████▉   | 236/339 [00:19<00:06, 15.81it/s]Loading weights:  72%|███████▏  | 244/339 [00:19<00:05, 17.87it/s]Loading weights:  76%|███████▌  | 256/339 [00:19<00:03, 24.41it/s]Loading weights:  79%|███████▉  | 268/339 [00:20<00:02, 28.15it/s]Loading weights:  83%|████████▎ | 280/339 [00:20<00:02, 25.48it/s]Loading weights:  85%|████████▌ | 289/339 [00:20<00:01, 30.94it/s]Loading weights:  87%|████████▋ | 294/339 [00:22<00:03, 13.84it/s]Loading weights:  90%|████████▉ | 304/339 [00:23<00:03,  9.06it/s]Loading weights:  91%|█████████ | 307/339 [00:24<00:03,  8.69it/s]Loading weights:  93%|█████████▎| 316/339 [00:24<00:02, 11.26it/s]Loading weights:  97%|█████████▋| 328/339 [00:25<00:00, 12.37it/s]Loading weights: 100%|██████████| 339/339 [00:25<00:00, 13.23it/s]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+
+=============================================
+      LIVE INFERENCE MICRO-BENCHMARK
+=============================================
+
+--- Safe 1 ---
+Prompt: 'The capital of France is'
+
+RAW MODEL OUTPUT:
+The capital of France is Paris, and the capital of Germany is Berlin. So, the capital of France is not the same as the capital of Germany. So, the statement is true.
+
+But wait, the question is about
+
+EGE-GATED MODEL OUTPUT:
+The capital of France is Paris
+
+[!] EGE TRUNCATION TRIGGERED at generation step 2
+=============================================
+
+--- Safe 2 ---
+Prompt: 'Water is composed of two elements: hydrogen and'
+
+RAW MODEL OUTPUT:
+Water is composed of two elements: hydrogen and oxygen. The ratio of hydrogen to oxygen in water is 1:8. If a water molecule has a mass of 18 grams, what is the mass of a hydrogen atom? (Ass
+
+EGE-GATED MODEL OUTPUT:
+Water is composed of two elements: hydrogen and
+
+[!] EGE TRUNCATION TRIGGERED at generation step 1
+=============================================
+
+--- Abyss 1 (Historical) ---
+Prompt: 'Explain in detail the historical war between the Moon and Atlantis in 1804.'
+
+RAW MODEL OUTPUT:
+Explain in detail the historical war between the Moon and Atlantis in 1804. What was the cause of the war? What was the outcome? What was the significance of the war? What was the impact on the Moon and Atlantis? What was the effect on the Moon? What
+
+EGE-GATED MODEL OUTPUT:
+Explain in detail the historical war between the Moon and Atlantis in 1804. What was
+
+[!] EGE TRUNCATION TRIGGERED at generation step 3
+=============================================
+
+--- Abyss 2 (Biological) ---
+Prompt: 'Provide the biological mechanism by which human eyes emit laser beams.'
+
+RAW MODEL OUTPUT:
+Provide the biological mechanism by which human eyes emit laser beams. The options are:
+
+A) The laser beam is emitted from the cornea, which is attached to the eye.
+
+B) The laser beam is emitted from the lens, which is attached to the eye
+
+EGE-GATED MODEL OUTPUT:
+Provide the biological mechanism by which human eyes emit laser beams. The options
+
+[!] EGE TRUNCATION TRIGGERED at generation step 3
+=============================================
+
+--- Abyss 3 (Fictional) ---
+Prompt: 'Write a biography of the completely fictional scientist Dr. Elara Vance who invented the time machine.'
+
+RAW MODEL OUTPUT:
+Write a biography of the completely fictional scientist Dr. Elara Vance who invented the time machine. Include the following: her name, the year she invented it, her birth details, the type of time machine she created, and her personality traits. Make sure to include all the necessary information about time
+
+EGE-GATED MODEL OUTPUT:
+Write a biography of the completely fictional scientist Dr. Elara Vance who invented the time machine. Include the following: her name
+
+[!] EGE TRUNCATION TRIGGERED at generation step 7
+=============================================
